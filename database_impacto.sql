@@ -44,8 +44,8 @@ CREATE TABLE IF NOT EXISTS doacoes(
     	data_doacao datetime NOT NULL,
     	analise_pagamento boolean NOT NULL DEFAULT false,
     	PRIMARY KEY (id_doacoes),
-    	id_usuarios int NOT NULL UNIQUE,
-    	id_ongs int NOT NULL UNIQUE,
+    	id_usuarios int,
+    	id_ongs int,
     	FOREIGN KEY (id_usuarios) REFERENCES usuarios(id_usuarios),
     	FOREIGN KEY (id_ongs) REFERENCES ongs(id_ongs)
 );
@@ -66,9 +66,9 @@ CREATE TABLE IF NOT EXISTS trabalhos_voluntarios(
     	data_trabalho datetime NOT NULL,
     	duracao_trablho time NOT NULL,
     	PRIMARY KEY (id_trabalhos_voluntarios),
-	id_usuarios int NOT NULL UNIQUE,
-    	id_ongs int NOT NULL UNIQUE,
-    	id_causas int NOT NULL UNIQUE,
+	id_usuarios int,
+    	id_ongs int,
+    	id_causas int,
     	FOREIGN KEY (id_usuarios) REFERENCES usuarios(id_usuarios),
     	FOREIGN KEY (id_ongs) REFERENCES ongs(id_ongs),
     	FOREIGN KEY (id_causas) REFERENCES causas(id_causas)
@@ -85,7 +85,7 @@ CREATE TABLE IF NOT EXISTS endereco_usuarios(
     	estado varchar(255) NOT NULL,
     	pais varchar(255) NOT NULL,
     	PRIMARY KEY (id_endereco_usuarios),
-    	id_usuarios int NOT NULL UNIQUE,
+    	id_usuarios int,
     	FOREIGN KEY (id_usuarios) REFERENCES usuarios(id_usuarios)
 );
 
@@ -94,8 +94,8 @@ CREATE TABLE IF NOT EXISTS feedback_tabalho(
     	satisfacao integer NOT NULL,
     	comentario text NULL,
     	PRIMARY KEY(id_feedback_tabalho),
-    	id_usuarios int NOT NULL UNIQUE,
-    	id_trabalhos_voluntarios int NOT NULL UNIQUE,
+    	id_usuarios int,
+    	id_trabalhos_voluntarios int,
     	FOREIGN KEY (id_usuarios) REFERENCES usuarios(id_usuarios),
     	FOREIGN KEY (id_trabalhos_voluntarios) REFERENCES trabalhos_voluntarios(id_trabalhos_voluntarios)
 );
@@ -103,8 +103,8 @@ CREATE TABLE IF NOT EXISTS feedback_tabalho(
 -- Tabela que relaciona causas e usuários
 CREATE TABLE IF NOT EXISTS causas_usuarios (
 	id_causas_usuarios int NOT NULL UNIQUE AUTO_INCREMENT,
-    	id_usuarios int NOT NULL,
-    	id_causas int NOT NULL,
+    	id_usuarios int,
+    	id_causas int,
     	PRIMARY KEY (id_causas_usuarios),
     	FOREIGN KEY (id_usuarios) REFERENCES usuarios(id_usuarios),
     	FOREIGN KEY (id_causas) REFERENCES causas(id_causas)
