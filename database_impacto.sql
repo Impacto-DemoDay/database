@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS usuarios (
     	interesses enum('doador', 'voluntario', 'ambos'),
     	data_cadastro datetime NOT NULL,
     	atualizado_em datetime NOT NULL,
-	pontuacao NOT NULL,
+	pontuacao int NOT NULL,
     	PRIMARY KEY (id_usuarios)
 );
 
